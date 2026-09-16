@@ -1,0 +1,15 @@
+apiVersion: mini/v1
+kind: Workload
+metadata:
+  name: echo-service
+spec:
+  command: ["/bin/sh", "-c", "while true; do echo alive; sleep 5; done"]
+  rootfs: ./images/alpine-rootfs
+  replicas: 2
+  resources:
+    cpu: "0.25"
+    memory: "128Mi"
+    pids: 64
+  restartPolicy: Always
+  network:
+    exposePort: 8080
